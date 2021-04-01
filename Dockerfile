@@ -1,21 +1,20 @@
-FROM python:3.8-slim-buster
+FROM node:14
 
 WORKDIR /app
 
 # Set locale and timezone
-RUN locale-gen ko_KR.UTF-8
 ENV LANG ko_KR.UTF-8
 ENV LANGUAGE ko_KR.UTF-8
 ENV TZ=Asia/Seoul
 
 # Install dependencies
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+COPY package.json .
+RUN npm install --silent
 
-# Copy sources
+# Copy source
 COPY . .
 
 # Run app
-EXPOSE 8000
-CMD [ "python3", "manage.py", "runserver", "8000" ]
+EXPOSE 3000
+CMD [ "npm", "run", "start" ]
 
