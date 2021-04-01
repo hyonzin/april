@@ -2,7 +2,7 @@ source "$(dirname "$0")"/config
 
 cd "$(dirname "$0")"/..
 
-CONTAINER_NAME=april-app-${BRANCH}
+CONTAINER_NAME=april-puller-${BRANCH}
 
 docker stop ${CONTAINER_NAME} 2>/dev/null
 
