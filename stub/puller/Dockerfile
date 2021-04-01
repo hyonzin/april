@@ -1,6 +1,6 @@
 FROM node:14
 
-WORKDIR /app
+WORKDIR /app/stub/puller
 
 # Set locale and timezone
 ENV LANG ko_KR.UTF-8
@@ -10,9 +10,6 @@ ENV TZ=Asia/Seoul
 # Install dependencies
 COPY package.json .
 RUN npm install --silent
-
-# Copy source
-COPY . .
 
 # Run app
 EXPOSE 9999
