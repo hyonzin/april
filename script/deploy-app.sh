@@ -1,13 +1,17 @@
+source "$(dirname "$0")"/config
+
 cd "$(dirname "$0")"/..
 
-docker stop april-app 2>/dev/null
+CONTAINER_NAME=april-app-${BRANCH}
 
-docker build --tag april-app-image .
+docker stop ${CONTAINER_NAME} 2>/dev/null
+
+docker build --tag ${CONTAINER_NAME}-image .
 
 docker run -d --rm \
 		   -v "${PWD}"/src:/app/src \
 		   -v "${PWD}"/public:/app/public \
-		   -p 3000:3000 \
-		   --name april-app \
-		   april-app-image
+		   -p ${APP_PORT}:3000 \
+		   --name ${CONTAINER_NAME} \
+		   ${CONTAINER_NAME}-image
 
