@@ -20,7 +20,7 @@ app.put('/', (req, res) => {
 
 	shell.exec('git pull origin $(git rev-parse --abbrev-ref HEAD)')
 
-	console.log('pulled.)
+	console.log('pulled.')
     res.send('Pulled. bye.')
   } else {
     console.log('not pulled.')
