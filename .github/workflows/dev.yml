@@ -34,4 +34,4 @@ jobs:
           echo Send request to server for updating code
           curl -X PUT -H "Content-Type: application/json; charset=utf-8" \
                -d '{"key":"${{ secrets.PULLER_SECRET_KEY }}"}' \
-               ${{ secrets.PULLER_URL }}
+               ${{ secrets.PULLER_URL }}/pull
