@@ -7,7 +7,10 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches:
+      - 'main'
       - 'dev'
+      - 'feature/*'
+      - 'hotfix/*'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,10 +27,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a set of commands using the runners shell
-      - name: Auto Pull
-        run: |
-          echo Send request to server for updating code
-          curl -X PUT -H "Content-Type: application/json; charset=utf-8" \
-               -d '{"key":"${{ secrets.PULLER_SECRET_KEY }}"}' \
-               ${{ secrets.PULLER_DEV_URL }}/pull
+      # Runs a single command using the runners shell
+      - name: test-something
+        run: echo Do test something...
+
