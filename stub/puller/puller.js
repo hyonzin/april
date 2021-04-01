@@ -30,25 +30,6 @@ app.put('/pull', (req, res) => {
   }
 })
 
-// restart containers
-app.put('/restart', (req, res) => {
-  if (secret_key != 0 &&
-	  req.body && req.body.key &&
-	  secret_key == (req.body.key+"\n")) {
-
-	console.log('will be restarted.')
-    res.send('will be restarted.')
-
-	shell.exec('docker restart april-app')
-	shell.exec('docker restart april-puller')
-
-  } else {
-    console.log('not pulled.')
-    res.send('not pulled.')
-  }
-})
-
-
 // run puller process
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`)
