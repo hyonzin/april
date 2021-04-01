@@ -31,7 +31,7 @@ app.put('/pull', (req, res) => {
 })
 
 // restart containers
-app.put('/pull', (req, res) => {
+app.put('/restart', (req, res) => {
   if (secret_key != 0 &&
 	  req.body && req.body.key &&
 	  secret_key == (req.body.key+"\n")) {
