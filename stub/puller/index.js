@@ -19,9 +19,11 @@ app.put('/', (req, res) => {
 	  secret_key == (req.body.key+"\n")) {
 
 	shell.exec('git pull origin $(git rev-parse --abbrev-ref HEAD)')
-	
+
+	console.log('pulled.)
     res.send('Pulled. bye.')
   } else {
+    console.log('not pulled.')
     res.send('bye.')
   }
 })
