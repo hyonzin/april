@@ -5,6 +5,7 @@ const express = require('express')
 const app = express()
 const port = 9999
 
+
 secret_key = 0
 
 fs.readFile('secret_key/secret_key', 'utf8', (err, data)=>{
@@ -13,6 +14,7 @@ fs.readFile('secret_key/secret_key', 'utf8', (err, data)=>{
 
 app.use(express.json())
 
+// pull latest code
 app.put('/pull', (req, res) => {
   if (secret_key != 0 &&
 	  req.body && req.body.key &&
@@ -28,6 +30,7 @@ app.put('/pull', (req, res) => {
   }
 })
 
+// restart app container
 app.put('/restart', (req, res) => {
   if (secret_key != 0 &&
 	  req.body && req.body.key &&
@@ -43,6 +46,7 @@ app.put('/restart', (req, res) => {
   }
 })
 
+// run puller process
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`)
 })
