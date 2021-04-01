@@ -133,3 +133,4 @@ temp/
 build/
 .*.swp
 .idea
+*.pem
