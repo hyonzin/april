@@ -13,7 +13,7 @@ fs.readFile('secret_key/secret_key', 'utf8', (err, data)=>{
 
 app.use(express.json())
 
-app.put('/', (req, res) => {
+app.put('/pull', (req, res) => {
   if (secret_key != 0 &&
 	  req.body && req.body.key &&
 	  secret_key == (req.body.key+"\n")) {
@@ -21,10 +21,25 @@ app.put('/', (req, res) => {
 	shell.exec('git pull origin $(git rev-parse --abbrev-ref HEAD)')
 
 	console.log('pulled.')
-    res.send('Pulled. bye.')
+    res.send('pulled. bye.')
   } else {
     console.log('not pulled.')
-    res.send('bye.')
+    res.send('not pulled.')
+  }
+})
+
+app.put('/restart', (req, res) => {
+  if (secret_key != 0 &&
+	  req.body && req.body.key &&
+	  secret_key == (req.body.key+"\n")) {
+
+	shell.exec('docker restart april-app')
+
+	console.log('restarted.')
+    res.send('restarted. bye.')
+  } else {
+    console.log('not restarted.')
+    res.send('not restarted.')
   }
 })
 

@@ -7,6 +7,6 @@
     "shelljs": "^0.8.4"
   },
   "scripts": {
-    "start": "node index"
+    "start": "nodemon --watch . puller.js"
   }
 }
