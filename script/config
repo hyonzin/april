@@ -7,4 +7,9 @@ if [ $BRANCH == 'main' ]; then
 elif [ $BRANCH == 'dev' ]; then
   export APP_PORT=3000
   export PULLER_PORT=9999
+else
+  export APP_PORT=3030
+  export PULLER_PORT=9090
+
+  export BRANCH='wip'
 fi
