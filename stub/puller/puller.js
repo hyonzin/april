@@ -21,6 +21,7 @@ app.put('/pull', (req, res) => {
 	  secret_key == (req.body.key+"\n")) {
 
 	shell.exec('git pull origin $(git rev-parse --abbrev-ref HEAD)')
+	shell.exec('cd ../.. && npm install')
 
 	console.log('pulled.')
     res.send('pulled.')
